@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HTML</title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: sans-serif;
+			}
+			body {
+				background: #141414;
+				/* padding: 4rem; */
+			}
+			.snippet {
+				/* user-select: none;
+				pointer-events: none; */
+				background: #ffffff0b;
+				margin-bottom: 1rem;
+				padding: 1rem;
+				border-radius: 5px;
+				max-width: 700px;
+			}
+			.snippet img {
+				/* user-select: none; */
+				max-width: 500px;
+			}
+			.languageHeader h1 {
+				position: relative;
+				color: #27C93F;
+				margin-bottom: 1.5rem;
+				font-size: 3rem;
+			}
+			.languageHeader h1::after {
+				content: '';
+				position: absolute;
+				top: -17px;
+				/* left: 260px; */
+				height: 84px;
+				width: 100px;
+				background: url('https://cdn3d.iconscout.com/3d/premium/thumb/web-programing-7362212-6020421.png?f=avif');
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+			.highlight {
+				color: #2aeeff;
+			}
+			.languageIntro {
+				margin-bottom: 1.5rem;
+			}
+			.languageIntro p {
+				color: #ffffffb9;
+				line-height: 1.5;
+			}
+			.languageContainer h2 {
+				color: #27C93F;
+				margin-bottom: 1rem;
+			}
+			.languageContainer > div {
+				margin-bottom: 2rem;
+			}
+			.dots {
+				gap: 0 0.5rem;
+				display: flex;
+			}
+			.dot:nth-of-type(1) {
+				background: #ff5f56;
+			}
+
+			.dot:nth-of-type(2) {
+				background: #ffbd2e;
+			}
+
+			.dot:nth-of-type(3) {
+				background: #27c93f;
+			}
+			.dot {
+				height: 12px;
+				width: 12px;
+				background: red;
+				border-radius: 100vmax;
+			}
+			.snippetHeader {
+				display: flex;
+				align-items: center;
+				color: #ffffffb9;
+				gap: 0 1rem;
+			}
+			.snippetBody {
+				display: flex;
+				padding: 1rem 0 0 0;
+			}
+			.snippetBody .lineNumber {
+				background: #00000000;
+				/* padding: 0 0.5rem; */
+			}
+			.snippetBody .lineNumber span {
+				color: #ffffffb9;
+				display: block;
+				line-height: 0.7;
+				padding: 0.5rem;
+				background: #0000001c;
+				text-align: center;
+			}
+			.languageContainer{
+				padding: 2rem;
+			}
+			.snippetBody pre {
+				width: 100%;
+				resize: none;
+				background: #212121;
+				outline: none;
+				border: none;
+				font-size: 17px;
+				height: max-content;
+				color: #ffffffb9;
+				line-height: 1.6;
+				background: transparent;
+				/* overflow: hidden; */
+				pointer-events: none;
+				padding: 0 1rem;
+			}
+			ul li::marker {
+				color: #ff5f56;
+			}
+
+			.tags p {
+				color: #ffffffb9;
+				margin-bottom: 1rem;
+				line-height: 1.4;
+			}
+			.tags ul {
+				color: #ffffffb9;
+				padding: 0 3rem;
+			}
+			.tags ul li {
+				margin-bottom: 1rem;
+				line-height: 1.5;
+			}
+			.red-highlight {
+				color: #ff5370 !important;
+				font-weight: bold;
+			}
+			.tags > div {
+				margin-bottom: 1rem;
+			}
+			.tags h4{
+				color: #ff5370;
+				margin-bottom: 1rem;
+			}
+
+
+
+
+
+
+
+
+
+
+
+			.flex {
+				display: flex;
+				align-items: center;
+			}
+			nav {
+				color: #ffffffb9;
+				justify-content: space-between;
+				padding: 1.5rem 2rem;
+				border-bottom: 1px solid #45252515;
+				position: relative;
+				box-shadow: 0 1px 5px 0px #51a9a930;
+			}
+
+			.links {
+				gap: 0 5rem;
+			}
+			.highlight {
+				color: #2aeeff;
+			}
+			.links > div {
+				cursor: pointer;
+			}
+			nav > h1 {
+				background: rgba(255, 255, 255, 0.134);
+				cursor: pointer;
+				border-radius: 5px;
+				padding: 0.5rem;
+			}
+			nav button {
+				color: #ffffffb9;
+				font-weight: bolder;
+				padding: 1rem;
+				cursor: pointer;
+				outline: none;
+				border: none;
+				background-color: #212121;
+				box-shadow: 0 0 10px 0px #51a9a930;
+				border-radius: 5px;
+			}
+			a{
+				text-decoration: none;
+				color: unset;
+			}
+		</style>
+	</head>
+	<body>
+			<nav class="flex">
+				<a href="./index.html">
+					<h1>bitbites</h1>
+				</a>
+
+				<div class="links flex">
+					<div>
+						<a href="./html.html">
+							<h4>HTML</h4>
+						</a>
+					</div>
+
+					<div>
+						<a href="./css.html">
+							<h4>CSS</h4>
+						</a>
+					</div>
+					<div>
+						<a href="./js.html">
+							<h4>JS</h4>
+						</a>
+					</div>
+				</div>
+                <a href="./editor.html">
+                    <button>
+                        Try our Editor
+                    </button>
+                </a>
+			</nav>
+		<div class="languageContainer">
+			<div class="languageHeader">
+				<h1>&ltHTML&gt Tutorial</h1>
+			</div>
+
+			<div class="languageIntro">
+				<p>
+					HTML (HyperText Markup Language) is the backbone of the World Wide
+					Web. It is a markup language used to create web pages and web
+					applications. HTML provides the structure and content of a web page,
+					while other technologies such as CSS and JavaScript provide the
+					presentation and interactivity.
+				</p>
+				<br />
+				<p>
+					HTML tags can have attributes, which provide additional information
+					about the element. For example, the &ltimg&gt tag is used to display
+					an image on a web page, and the "src" attribute is used to specify the
+					URL of the image.
+				</p>
+			</div>
+
+			<div class="basicSyntax">
+				<h2>A basic HTML document</h2>
+
+				<div class="snippet">
+					<div class="snippetHeader">
+						<div class="dots flex">
+							<div class="dot"></div>
+							<div class="dot"></div>
+							<div class="dot"></div>
+						</div>
+						<span>html</span>
+					</div>
+
+					<div class="snippetBody">
+						<div class="lineNumber">
+							<span>1</span>
+							<span>2</span>
+							<span>3</span>
+							<span>4</span>
+							<span>5</span>
+							<span>6</span>
+							<span>7</span>
+							<span>8</span>
+							<span>9</span>
+							<span>10</span>
+						</div>
+
+						<pre>
+<span class="red-highlight">&lt!DOCTYPE html&gt</span>
+<span class="red-highlight">&lthtml&gt</span>
+	<span class="red-highlight">&lthead&gt</span>
+		<span class="red-highlight">&lttitle&gt</span>Page Title<span class="red-highlight">&lt/title&gt</span>	
+	<span class="red-highlight">&lt/head&gt</span>
+	<span class="red-highlight">&ltbody&gt</span>
+		<span class="red-highlight">&lth1&gt</span>This is a heading<span class="red-highlight">&lt/h1&gt</span>
+		<span class="red-highlight">&ltp&gt</span>	This is a paragraph.<span class="red-highlight">&lt/p&gt</span>
+<span class="red-highlight">	&lt/body&gt</span>
+<span class="red-highlight">&lt/html&gt</span></pre
+						>
+					</div>
+					<div class="snippetFooter">
+					<button class="run" data-lang="html">Run</button>
+					</div>
+				</div>
+
+				
+			</div>
+
+
+				<div class="tags">
+
+					<h2>HTML Tags</h2>
+
+					<ul>
+						<li>
+						<span class="red-highlight">	&ltDOCTYPE! html&gt </span>- A doctype or document type declaration is an
+							instruction that tells the web browser about the markup language in
+							which the current page is written. It is not an element or tag. The
+							doctype declaration is not case-sensitive.
+						</li>
+
+						<li>
+							<span class="red-highlight">
+
+							
+							&lthtml&gt</span> - This tag is used to define the root element of HTML
+							document. This tag tells the browser that it is an HTML document. It
+							is the second outer container element that contains all other
+							elements within it.
+						</li>
+
+						<li><span class="red-highlight">
+							&lthead&gt</span> - This tag is used to define the head portion of the HTML
+							document that contains information related to the document. Elements
+							within the head tag are not visible on the front-end of a webpage.
+						</li>
+						<li>
+							<span class="red-highlight">
+
+							
+							&ltbody&gt</span> - The body tag is used to enclose all the visible content
+							of a webpage. In other words, the body content is what the browser
+							will show on the front end.
+						</li>
+					</ul>
+
+					<div>
+								<h2>HTML Headings</h2>
+								<p>HTML headings are defined with the &lth1&gt to &lth6&gt tags.</p>
+
+								<p class="red-highlight">Example</p>
+
+									<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>html</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+													<pre><span class="red-highlight">&lth1&gt</span>This is heading 1 <span class="red-highlight">&lt/h1&gt</span></pre>
+												</div>
+												<div class="snippetFooter">
+					<button class="run">Run</button>
+					</div>
+									</div>
+
+									<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>html</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+													<pre><span class="red-highlight">&lth2&gt</span>This is heading 2 <span class="red-highlight">&lt/h2&gt</span></pre>
+												</div>
+									</div>
+
+									<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>html</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+													<pre><span class="red-highlight">&lth3&gt</span>This is heading 3 <span class="red-highlight">&lt/h3&gt</span></pre>
+												</div>
+									</div>
+					</div>
+
+					<div>
+						<h2>HTML paragraphs</h2>
+
+						<p>HTML paragraphs are defined with the &ltp&gt tag</p>
+
+						<p class="red-highlight">Example</p>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>html</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+								</div>
+								<pre><span class="red-highlight">&ltp&gt</span>This is a paragraph.<span class="red-highlight">&lt/p&gt</span></pre>
+							</div>
+						</div>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>html</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+								</div>
+								<pre><span class="red-highlight">&ltp&gt</span>This is another paragraph.<span class="red-highlight">&lt/p&gt</span></pre>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h2>Creating a link to another web page:</h2>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>html</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+								</div>
+								<pre><span class="red-highlight">&lta</span> href="https://www.example.com"<span class="red-highlight">&gt</span>Visit Example.com<span class="red-highlight">&lt/a&gt</span></pre
+								>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h2>Adding an image to a web page:</h2>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>html</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+								</div>
+								<pre><span class="red-highlight">&ltimg</span> src="image.jpg" alt="Avatar"<span class="red-highlight">&gt<span class="red-highlight">&lt/img&gt</span></pre
+								>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h2>Creating a list:</h2>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>html</span>
+							</div>
+
+								<div class="snippetBody">
+									<div class="lineNumber">
+										<span>1</span>
+										<span>2</span>
+										<span>3</span>
+										<span>4</span>
+										<span>5</span>
+									</div>
+								<pre><span class="red-highlight">&ltul&gt</span>
+	<span class="red-highlight">&ltli&gt</span>Item 1<span class="red-highlight">&lt/li&gt</span>
+	<span class="red-highlight">&ltli&gt</span>Item 2<span class="red-highlight">&lt/li&gt</span>
+	<span class="red-highlight">&ltli&gt</span>Item 3<span class="red-highlight">&lt/li&gt</span>
+<span class="red-highlight">&lt/ul&gt</span></pre
+									>
+								</div>
+						</div>
+					</div>
+
+					<div>
+						<h2>Adding a form to a web page:</h2>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>html</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+									<span>2</span>
+									<span>3</span>
+									<span>4</span>
+									<span>5</span>
+									<span>6</span>
+									<span>7</span>
+								</div>
+										<pre>
+<span class="red-highlight">&ltform&gt</span>
+	<span class="red-highlight">&ltlabel</span> for="name"<span class="red-highlight">&gt</span>Name:<span class="red-highlight">&lt/label&gt</span>
+	<span class="red-highlight">&ltinput</span> type="text" id="name" name="name"<span class="red-highlight">&gt</span>
+	<span class="red-highlight">&ltlabel</span> for="email"<span class="red-highlight">&gt</span>Email:<span class="red-highlight">&lt/label&gt</span>
+	<span class="red-highlight">&ltinput</span> type="email" id="email" name="email"<span class="red-highlight">&gt</span>
+	<span class="red-highlight">&ltinput</span> type="submit" value="Submit"<span class="red-highlight">&gt</span>
+<span class="red-highlight">&lt/form&gt</span>
+																				</pre
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					</div>
+
+			
+					<div>
+						<h2>The HTML Style Attribute</h2>
+						<p>
+							The style attribute in HTML is used to add inline CSS styles to HTML
+							elements.
+						</p>
+						<p>
+							Including font size, font color, background color, text alignment, border
+							styles, and more.
+						</p> 
+					<p>
+						It allows you to add a variety of visual styles to your web page,
+					</p>
+					</div>
+
+					
+					<div>
+						<h4>Changing color of a p tag:</h4>
+
+
+						<div class="snippet">
+								<div class="snippetHeader">
+									<div class="dots ">
+											<div class="dot"></div>
+											<div class="dot"></div>
+											<div class="dot"></div>
+									</div>
+									<span>html</span>
+								</div>
+
+								<div class="snippetBody">
+									<div class="lineNumber">
+										<span>1</span>
+									</div>
+									<pre><span class="red-highlight">&ltp</span> style="color: red;"<span class="red-highlight">&gt</span>This text is red.<span class="red-highlight">&lt/p&gt</span></pre>
+								</div>
+
+							</div>
+					</div>
+
+
+
+					<div>
+						<h4>Aligning the text to center:</h4>
+
+
+						<div class="snippet">
+								<div class="snippetHeader">
+									<div class="dots ">
+											<div class="dot"></div>
+											<div class="dot"></div>
+											<div class="dot"></div>
+									</div>
+									<span>html</span>
+								</div>
+
+								<div class="snippetBody">
+									<div class="lineNumber">
+										<span>1</span>
+										<span>2</span>
+										<span>3</span>
+										<span>4</span>
+									</div>
+										<pre><span class="red-highlight">&ltdiv</span> style="text-align: center"<span class="red-highlight">&gt</span>
+	<span class="red-highlight">	&lth1&gt</span>Hello, World!<span class="red-highlight">&lt/h1&gt</span>
+	<span class="red-highlight">	&ltp&gt</span>This text is centered.<span class="red-highlight">&lt/p&gt</span>
+<span class="red-highlight">&lt/div&gt</span></pre
+		>
+								</div>
+
+							</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+			
+			</div>
+
+		</div>
+
+		<script src="script.js" defer></script>
+	</body>
+</html>

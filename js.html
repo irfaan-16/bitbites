@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Js</title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: sans-serif;
+			}
+			body {
+				background: #141414;
+				/* padding: 4rem; */
+			}
+			.snippet {
+				/* user-select: none;
+				pointer-events: none; */
+				background: #ffffff0b;
+				margin-bottom: 1rem;
+				padding: 1rem;
+				border-radius: 5px;
+				max-width: 700px;
+			}
+			.snippet img {
+				/* user-select: none; */
+				max-width: 500px;
+			}
+			.languageHeader h1 {
+				position: relative;
+				color: #27C93F;
+				margin-bottom: 1.5rem;
+				font-size: 3rem;
+			}
+			.languageHeader h1::after {
+			    content: '';
+    position: absolute;
+    top: -17px;
+    /* left: 476px; */
+    height: 84px;
+    width: 100px;
+    background: url('https://cdn3d.iconscout.com/3d/premium/thumb/web-programing-7362212-6020421.png?f=avif');
+    background-size: contain;
+    background-repeat: no-repeat;
+			}
+			.highlight {
+				color: #2aeeff;
+			}
+			.languageIntro {
+				margin-bottom: 1.5rem;
+			}
+			.languageIntro p {
+				color: #ffffffb9;
+				line-height: 1.5;
+			}
+			.languageContainer h2 {
+				color: #27C93F;
+				margin-bottom: 1rem;
+			}
+			.languageContainer > div {
+				margin-bottom: 2rem;
+			}
+			.dots {
+				gap: 0 0.5rem;
+				display: flex;
+			}
+			.dot:nth-of-type(1) {
+				background: #ff5f56;
+			}
+
+			.dot:nth-of-type(2) {
+				background: #ffbd2e;
+			}
+
+			.dot:nth-of-type(3) {
+				background: #27c93f;
+			}
+			.dot {
+				height: 12px;
+				width: 12px;
+				background: red;
+				border-radius: 100vmax;
+			}
+			.snippetHeader {
+				display: flex;
+				align-items: center;
+				color: #ffffffb9;
+				gap: 0 1rem;
+			}
+			.snippetBody {
+				display: flex;
+				padding: 1rem 0 0 0;
+			}
+			.snippetBody .lineNumber {
+				background: #00000000;
+				/* padding: 0 0.5rem; */
+			}
+			.snippetBody .lineNumber span {
+				color: #ffffffb9;
+				display: block;
+				line-height: 0.7;
+				padding: 0.5rem;
+				background: #0000001c;
+				text-align: center;
+			}
+			.languageContainer{
+				padding: 2rem;
+			}
+			.snippetBody pre {
+				width: 100%;
+				resize: none;
+				background: #212121;
+				outline: none;
+				border: none;
+				font-size: 17px;
+				height: max-content;
+				color: #ffffffb9;
+				line-height: 1.6;
+				background: transparent;
+				/* overflow: hidden; */
+				pointer-events: none;
+				padding: 0 1rem;
+			}
+			ul li::marker,ol li::marker {
+				color: #ff5f56;
+			}
+
+			.tags p {
+				color: #ffffffb9;
+				margin-bottom: 1rem;
+				line-height: 1.4;
+			}
+			.tags ul,.tags ol {
+				color: #ffffffb9;
+				padding: 0 3rem;
+			}
+			.tags ul li ,.tags ol li{
+				margin-bottom: 1rem;
+				line-height: 1.5;
+			}
+			.red-highlight {
+				color: #ff5370 !important;
+				font-weight: bold;
+			}
+			.tags > div {
+				margin-bottom: 1rem;
+			}
+			.tags h4{
+				color: #ff5370;
+				margin-bottom: 1rem;
+			}
+
+
+
+
+
+
+
+
+
+
+
+			.flex {
+				display: flex;
+				align-items: center;
+			}
+			nav {
+				color: #ffffffb9;
+				justify-content: space-between;
+				padding: 1.5rem 2rem;
+				border-bottom: 1px solid #45252515;
+				position: relative;
+				box-shadow: 0 1px 5px 0px #51a9a930;
+			}
+
+			.links {
+				gap: 0 5rem;
+			}
+			.highlight {
+				color: #2aeeff;
+			}
+			.links > div {
+				cursor: pointer;
+			}
+			nav > h1 {
+				background: rgba(255, 255, 255, 0.134);
+				cursor: pointer;
+				border-radius: 5px;
+				padding: 0.5rem;
+			}
+			nav button {
+				color: #ffffffb9;
+				font-weight: bolder;
+				padding: 1rem;
+				cursor: pointer;
+				outline: none;
+				border: none;
+				background-color: #212121;
+				box-shadow: 0 0 10px 0px #51a9a930;
+				border-radius: 5px;
+			}
+			a{
+				text-decoration: none;
+				color: unset;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="flex">
+				<a href="./index.html">
+					<h1>bitbites</h1>
+				</a>
+
+				<div class="links flex">
+					<div>
+						<a href="./html.html">
+							<h4>HTML</h4>
+						</a>
+					</div>
+
+					<div>
+						<a href="./css.html">
+							<h4>CSS</h4>
+						</a>
+					</div>
+					<div>
+						<a href="./js.html">
+							<h4>JS</h4>
+						</a>
+					</div>
+				</div>
+                <a href="./editor.html">
+                    <button>
+                        Try our Editor
+                    </button>
+                </a>
+			</nav>
+		<div class="languageContainer">
+			<div class="languageHeader">
+				<h1>&ltJavascript&gt Tutorial</h1>
+			</div>
+
+			<div class="languageIntro">
+				<p>
+					JavaScript is a programming language that is primarily used for creating interactive web content. It is a client-side language, meaning that it runs on the user's web browser rather than on a server. JavaScript can be used to add interactivity, animations, and other dynamic features to websites, such as pop-up windows, drop-down menus, and image sliders.
+				</p>
+				<br />
+				<p>
+					JavaScript was first introduced in 1995 by Brendan Eich at Netscape Communications Corporation, and it has since become one of the most widely used programming languages in the world. It is a relatively easy language to learn, with many resources available for beginners, and its popularity has led to the development of numerous libraries, frameworks, and tools to make programming with JavaScript even more efficient and powerful.
+
+
+
+
+				</p>
+			</div>
+
+			<div class="basicSyntax">
+				<h2>A basic JavaScript program</h2>
+
+				<div class="snippet">
+					<div class="snippetHeader">
+						<div class="dots flex">
+							<div class="dot"></div>
+							<div class="dot"></div>
+							<div class="dot"></div>
+						</div>
+						<span>js</span>
+					</div>
+
+					<div class="snippetBody">
+						<div class="lineNumber">
+							<span>1</span>
+							<span>2</span>
+							<span>3</span>
+							<span>4</span>
+							<span>5</span>
+							<span>6</span>
+							<span>7</span>
+							<span>8</span>
+							<span>9</span>
+							<span>10</span>
+						</div>
+
+						<pre>
+// Define a function that takes two arguments and returns their sum
+<span class="red-highlight">function addNumbers</span>(a, b) {
+  <span class="red-highlight">return</span> a + b;
+}
+
+// Call the function and store the result in a variable
+<span class="red-highlight">var</span> result = <span class="red-highlight">addNumbers</span>(3, 5);
+
+// Print the result to the console
+console.log("The sum of 3 and 5 is: " + result);
+					</div>
+				</div>
+			</div>
+
+
+				<div class="tags">
+
+					<h2>JavaScript common terms</h2>
+
+					<ul>
+						<li>
+						<span class="red-highlight">	&ltscript&gt tag </span>- the &ltscript&gt tag is used to include JavaScript code in an HTML document. The &ltscript&gt tag can be placed in either the &lthead&gt or the &ltbody&gt section of an HTML document.
+						</li>
+
+	                                <div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+															<span>2</span>
+															<span>3</span>
+															<span>4</span>
+														</div>
+													<pre><span class="red-highlight"> &ltscript&gt</span>
+        let a=10;
+        console.log(a);
+<span class="red-highlight">  &lt/script&gt</span></pre>
+												</div>
+									</div>
+
+						<li>
+							<span class="red-highlight">
+							
+							Function</span> -A JavaScript function is a block of JavaScript code, that can be executed when "called" for.
+For example, a function can be called when an event occurs, like when the user clicks a button.  A function can take one or more parameters as input, perform some operation on those parameters, and then return a value as output.
+						</li>
+
+                                     <div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+															<span>2</span>
+															<span>3</span>
+															<span>4</span>
+															<span>5</span>
+														</div>
+													<pre>
+<span class="red-highlight">&ltscript&gt</span>
+<span class="red-highlight">function</span> myFunction() {
+ document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+<span class="red-highlight">&lt/script&gt</span></pre>
+												</div>
+									</div>
+
+						<li><span class="red-highlight">
+							Variables</span> -In JavaScript, a variable is a container that can hold a value or a reference to a value. Variables are used to store and manipulate data in a program.
+
+To declare a variable in JavaScript, you can use the var, let, or const keyword, followed by the variable name
+						</li>
+
+                                    <div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+															<span>2</span>
+															<span>3</span>
+															<span>4</span>
+															<span>5</span>
+														</div>
+													<pre><span class="red-highlight">&ltscript&gt</span>
+    <span class="red-highlight">let</span> x = 5;
+    <span class="red-highlight">let</span> y = 5;
+    <span class="red-highlight">let</span> z = x+y;
+<span class="red-highlight">&lt/script&gt</span></pre>
+												</div>
+									</div>
+                       
+					</ul>
+
+					<div>
+						<h2>JavaScript can "display" data in different ways:</h2>
+
+						<ul>
+							<li>Writing into an HTML element, using <span class="red-highlight">innerHTML.</span> </li>
+							<li>Writing into an HTML output using <span class="red-highlight">document.write()</span> </li>
+							<li>Writing into an  into an alert box, using <span class="red-highlight">window.alert()</span> </li>
+							<li>Writing into the browser console, using <span class="red-highlight">console.log()</span> </li>
+						</ul>
+					</div>
+
+
+					<div>
+						<h2>JavaScript Literals</h2>
+						<p>The two most important syntax rules for fixed values are: </p>
+
+						<ol>
+							<li><span class="red-highlight">Numbers</span> are written with or without decimals:</li>
+							   		<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+															<span>2</span>
+														</div>
+													<pre>10.50
+1001</pre>
+												</div>
+									</div>
+
+							<li><span class="red-highlight">Strings </span>are text, written within double or single quotes</li>
+							   		<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+															<span>2</span>
+															<span>3</span>
+															<span>4</span>
+														</div>
+													<pre><span class="red-highlight">&ltscript&gt</span>
+    <span class="red-highlight">let</span> name = "John Doe";
+    <span class="red-highlight">let</span> name2='John Doe';
+<span class="red-highlight">&lt/script&gt</span></pre>
+												</div>
+									</div>
+						</ol>
+					</div>
+
+					<div>
+						<h2>JavaScript Identifiers / Names </h2>
+						<p>Identifiers are JavaScript names. Identifiers are used to name variables and keywords, and functions. The rules for
+						legal names are the same in most programming languages.</p>
+						<h4>A JavaScript name must begin with:</h4>
+
+						<ul>
+							<li>A letter (A-Z or a-z) </li>
+							<li>A dollar sign ($) </li>
+							<li>Or an underscore (_) </li>
+						</ul>
+					</div>
+
+					<div>
+						<h2>All JavaScript identifiers are case sensitive. </h2>
+						<p>The variables	<span class="red-highlight"> lastName </span>and <span class="red-highlight">lastname</span>, are two different variables:</p>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>js</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+									<span>2</span>
+									<span>3</span>
+									<span>4</span>
+									<span>5</span>
+								</div>
+								<pre><span class="red-highlight">&ltscript&gt</span>	
+	<span class="red-highlight">let</span> lastname, lastName;
+	lastName = "Doe";
+	lastname = "Peterson";
+<span class="red-highlight">&lt/script&gt</span>
+</pre>
+							</div>
+						</div>
+					</div>
+					
+					<div>
+								<h2>JavaScript Variables </h2>
+								<p>There are <span class="red-highlight">4</span> Ways to Declare a JavaScript Variable: </p>
+
+								<p class="red-highlight">Example</p>
+							<ul>
+								<li>Using <span class="red-highlight">let </span>keyword</li>
+										<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+													<pre><span class="red-highlight">let </span>name="john";</pre>
+												</div>
+										</div>
+
+									<li>Using <span class="red-highlight"> const</span> keyword</li>
+										<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+													<pre><span class="red-highlight">const </span>PI=3.14;</pre>
+												</div>
+										</div>
+
+										<li>Using <span class="red-highlight">var</span></li>
+
+											<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>js</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+													<pre><span class="red-highlight">var </span>name="john";</pre>
+												</div>
+											</div>
+							</ul>
+									
+					</div>
+
+
+					<div>
+						<h2>When to use JavaScript const?</h2>
+						<p>Always declare a variable with <span class="red-highlight">const</span> when you know that the value should not be changed.</p>
+						<p>Use <span class="red-highlight">const</span> when you declare: </p>
+						<ul>
+							<li>A new Array</li>
+							<li>A new Object </li>
+							<li>A new Function </li>
+							<li>A new RegExp </li>
+						</ul>
+					</div>
+
+					<div>
+						<h2>JavaScript has 8 Datatypes.</h2>
+						<ol>
+							<li>String</li>
+							<li>Number</li>
+							<li>Bigint</li>
+							<li>Boolean</li>
+							<li>Undefined</li>
+							<li>Null</li>
+							<li>Symbol</li>
+							<li>Object</li>
+						
+						</ol>
+					</div>
+					
+					<div>
+						<h2>JavaScript Strings</h2>
+
+						<p>A string (or a text string) is a series of characters like "John Doe".</p>
+						<p>Strings are written with quotes. You can use single or double quotes.</p>
+
+						<p class="red-highlight">Example</p>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>js</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+									<span>2</span>
+									<span>3</span>
+									<span>4</span>
+								</div>
+								<pre>// Using double quotes:
+<span class="red-highlight">let</span> carName1 = "Volvo XC60"; 
+ //Using single quotes
+ <span class="red-highlight">let</span>carName2  = "Volvo XC60";
+</pre>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div>
+						<h2>JavaScript Arrays</h2>
+
+						<p>JavaScript arrays are written with square brackets. Array items are separated by commas.  </p>
+						<p>The following code declares (creates) an array called cars, containing three items (car names):</p>
+
+						<p class="red-highlight">Example</p>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>js</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+								</div>
+								<pre><span class="red-highlight">const</span> cars=["Saab","Volvo","BMW"];</pre>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div>
+						<h2>JavaScript Objects</h2>
+
+						<p>JavaScript objects are written with <span class="red-highlight">curly braces {}.</span>  </p>
+						<p>Object properties are written as name:value pairs, separated by commas.</p>
+
+						<p class="red-highlight">Example</p>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>js</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+								</div>
+								<pre><span class="red-highlight">const</span> person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}; 
+</pre>
+							</div>
+						</div>
+
+					</div>
+
+					
+				
+					
+					
+					<div>
+						<h2>JavaScript Keywords </h2>
+						<p>
+							JavaScript <span class="red-highlight">keywords</span> are used to identify actions to be performed
+						</p>
+						<p>
+							The <span class="red-highlight">let</span> keyword tells the browser to create variables:
+						</p> 
+
+							<div class="snippet">
+								<div class="snippetHeader">
+									<div class="dots ">
+											<div class="dot"></div>
+											<div class="dot"></div>
+											<div class="dot"></div>
+									</div>
+									<span>js</span>
+								</div>
+
+								<div class="snippetBody">
+									<div class="lineNumber">
+										<span>1</span>
+										<span>2</span>
+										<span>3</span>
+									</div>
+									<pre><span class="red-highlight">let </span> x, y;
+x = 5 + 6;
+y = x * 10; 
+</pre>
+								</div>
+
+							</div>
+						<p>
+							The <span class="red-highlight">var</span> keyword also tells the browser to create variables:
+						</p> 
+
+							<div class="snippet">
+								<div class="snippetHeader">
+									<div class="dots ">
+											<div class="dot"></div>
+											<div class="dot"></div>
+											<div class="dot"></div>
+									</div>
+									<span>js</span>
+								</div>
+
+								<div class="snippetBody">
+									<div class="lineNumber">
+										<span>1</span>
+										<span>2</span>
+										<span>3</span>
+									</div>
+									<pre><span class="red-highlight">var </span> x, y;
+x = 5 + 6;
+y = x * 10; 
+</pre>
+								</div>
+
+							</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+			
+			</div>
+
+		</div>
+	</body>
+</html>

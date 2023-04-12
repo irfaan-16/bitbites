@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Code editor</title>
+		<link rel="stylesheet" href="editor.css" />
+		<!-- <link rel="stylesheet" href="./styles/default.min.css" />
+		<link rel="stylesheet" href="./styles/atom-one-dark.min.css" /> -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css"
+			integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
+			integrity="sha512-gFMl3u9d0xt3WR8ZeW05MWm3yZ+ZfgsBVXLSOiFz2xeVrZ8Neg0+V1kkRIo9LikyA/T9HuS91kDfc2XWse0K0A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+	</head>
+	<body>
+		<div class="editorContainer flex space-between">
+			<div class="codeInputs">
+				<div class="codeInput">
+					<div class="codeInputHeader flex">
+						<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-html">
+							<rect fill="#FF3C41" width="15" height="15" rx="4"></rect>
+							<path
+								d="M10.97 2.29a.563.563 0 0 0-.495-.29.572.572 0 0 0-.488.277l-5.905 9.86a.565.565 0 0 0-.007.574c.102.18.287.289.495.289a.572.572 0 0 0 .488-.277l5.905-9.86a.565.565 0 0 0 .007-.574"
+								fill="#28282B"
+							></path>
+						</svg>
+						<h3>HTML</h3>
+					</div>
+
+					<div class="codeEditorContainer">
+						<textarea id="html"></textarea>
+					</div>
+				</div>
+
+				<div class="codeInput">
+					<div class="codeInputHeader flex">
+						<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-css">
+							<rect fill="#0EBEFF" width="15" height="15" rx="4"></rect>
+							<path
+								d="M8 8.366l1.845 1.065a.507.507 0 0 0 .686-.181.507.507 0 0 0-.186-.685L8.5 7.5l1.845-1.065a.507.507 0 0 0 .186-.685.507.507 0 0 0-.686-.181L8 6.634v-2.13A.507.507 0 0 0 7.5 4c-.268 0-.5.225-.5.503v2.131L5.155 5.569a.507.507 0 0 0-.686.181.507.507 0 0 0 .186.685L6.5 7.5 4.655 8.565a.507.507 0 0 0-.186.685c.134.232.445.32.686.181L7 8.366v2.13c0 .271.224.504.5.504.268 0 .5-.225.5-.503V8.366z"
+								fill="#282828"
+							></path>
+						</svg>
+
+						<h3>CSS</h3>
+					</div>
+
+					<div class="codeEditorContainer">
+						<textarea id="css"></textarea>
+					</div>
+				</div>
+
+				<div class="codeInput">
+					<div class="codeInputHeader flex">
+						<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-js">
+							<rect fill="#FCD000" width="15" height="15" rx="4"></rect>
+							<path
+								d="M6.554 3.705c0 .267-.19.496-.452.543-1.2.217-2.12 1.61-2.12 3.275 0 1.665.92 3.057 2.12 3.274a.554.554 0 0 1-.205 1.087c-1.733-.322-3.022-2.175-3.022-4.361 0-2.187 1.289-4.04 3.022-4.362a.554.554 0 0 1 .657.544zm1.892 0c0-.347.316-.607.657-.544 1.733.322 3.022 2.175 3.022 4.362 0 2.186-1.289 4.04-3.022 4.361a.554.554 0 0 1-.205-1.087c1.2-.217 2.12-1.61 2.12-3.274 0-1.665-.92-3.058-2.12-3.275a.551.551 0 0 1-.452-.543z"
+								fill="#282828"
+							></path>
+						</svg>
+						<h3>JS</h3>
+					</div>
+
+					<div class="codeEditorContainer">
+						<textarea id="js"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="output">
+				<iframe id="output"></iframe>
+			</div>
+		</div>
+
+		<script src="./editor.js" defer></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"
+			integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"
+			integrity="sha512-I6CdJdruzGtvDyvdO4YsiAq+pkWf2efgd1ZUSK2FnM/u2VuRASPC7GowWQrWyjxCZn6CT89s3ddGI+be0Ak9Fg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/htmlmixed/htmlmixed.js"
+			integrity="sha512-ooMFWcVphTl+L7BsQk/PRDyUyFYH7f2QHjJ0kFvkTxJgMJS8XXPDJBZIrBtM0P7TCDOPjfQcnbx3s8hp27vraw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"
+			integrity="sha512-LarNmzVokUmcA7aUDtqZ6oTS+YXmUKzpGdm8DxC46A6AHu+PQiYCUlwEGWidjVYMo/QXZMFMIadZtrkfApYp/g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/css/css.min.js"
+			integrity="sha512-rQImvJlBa8MV1Tl1SXR5zD2bWfmgCEIzTieFegGg89AAt7j/NBEe50M5CqYQJnRwtkjKMmuYgHBqtD1Ubbk5ww=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script>
+			const htmlEditor = CodeMirror.fromTextArea(
+				document.getElementById('html'),
+				{
+					mode: 'htmlmixed',
+					theme: ' dracula',
+					lineNumbers: true,
+					indentWithTabs: true,
+				}
+			);
+			const cssEditor = CodeMirror.fromTextArea(
+				document.getElementById('css'),
+				{
+					mode: 'css',
+					theme: ' dracula',
+					lineNumbers: true,
+					indentWithTabs: true,
+				}
+			);
+			const jsEditor = CodeMirror.fromTextArea(document.getElementById('js'), {
+				mode: 'javascript',
+				theme: ' dracula',
+				lineNumbers: true,
+				indentWithTabs: true,
+			});
+
+			// const htmlEditor = document.querySelector('#html');
+			// const htmlEditorAce = ace.edit('html');
+			// // htmlEditorAce.setTheme('ace/theme/monokai');
+			// htmlEditorAce.setOptions({
+			// 	theme: 'ace/theme/monokai',
+			// 	cursorStyle: 'wide',
+			// 	fontFamily: sans - serif,
+			// });
+			// htmlEditorAce.setCursorStlye('wide');
+			// ace.edit(htmlEditor, {
+			// 	theme: 'ace/theme/gob',
+			// 	mode: 'ace/mode/javascript',
+			// 	// cursorStyle: 'wide',
+			// });
+			// setOption('cursorStyle', 'slim');
+			// setOption('showLineNumbers', false);
+
+			// ace.setCursorStyle=
+		</script>
+	</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>bitbites</title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: sans-serif;
+			}
+
+			.loginContainer {
+				min-height: 100vh;
+				background: #141414;
+			}
+			.flex {
+				display: flex;
+				align-items: center;
+			}
+			nav {
+				color: #ffffffb9;
+				justify-content: space-between;
+				padding: 1.5rem 2rem;
+				border-bottom: 1px solid #45252515;
+				position: relative;
+				box-shadow: 0 1px 5px 0px #51a9a930;
+			}
+
+			.links {
+				gap: 0 5rem;
+			}
+			.highlight {
+				color: #27c93f;
+			}
+			.links > div {
+				cursor: pointer;
+			}
+			nav > h1 {
+				background: rgba(255, 255, 255, 0.134);
+				cursor: pointer;
+				border-radius: 5px;
+				padding: 0.5rem;
+			}
+			nav button {
+				color: #ffffffb9;
+				font-weight: bolder;
+				padding: 1rem;
+				cursor: pointer;
+				outline: none;
+				border: none;
+				background-color: #212121;
+				box-shadow: 0 0 10px 0px #51a9a930;
+				border-radius: 5px;
+			}
+			.banner .imageContainer {
+				position: relative;
+				min-height: 500px;
+				width: 90%;
+				max-width: 1200px;
+			}
+			.banner {
+				flex-direction: column;
+				gap: 4rem 0;
+				padding: 3rem 0;
+			}
+			.banner > h1 {
+				color: #ffffffb9;
+				font-size: 4rem;
+				text-align: center;
+				position: relative;
+			}
+			.banner > h1::after {
+				content: '';
+				position: absolute;
+				right: 0;
+				top: -20px;
+				height: 110px;
+				width: 110px;
+				background-image: url('https://cdn3d.iconscout.com/3d/premium/thumb/web-development-5331488-4455562.png');
+				animation: illustration infinite 1s alternate;
+				background-size: cover;
+				z-index: 3;
+			}
+			.bracket-highlight-red {
+				color: #ff5f56;
+			}
+
+			.bracket-highlight-yellow {
+				color: #ffbd2e;
+			}
+
+			.bracket-highlight-green {
+				color: #27c93f;
+			}
+			.banner > h1::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: -20px;
+				height: 110px;
+				animation: illustration infinite 1s alternate;
+				width: 110px;
+				background-image: url('https://cdn3d.iconscout.com/3d/premium/thumb/web-development-5331488-4455562.png');
+				background-size: cover;
+				z-index: 3;
+				filter: hue-rotate(136deg);
+				/* transform:rotate(10deg); */
+			}
+			.imageContainer::before {
+				content: '';
+				animation: bg-illustration infinite 1s alternate;
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				top: 0;
+				left: 0;
+
+				background: linear-gradient(
+						to right,
+						#141414,
+						transparent,
+						transparent,
+						transparent,
+						transparent,
+						#141414
+					),
+					linear-gradient(to top, #141414, transparent, #141414),
+					url(banner.jpg);
+
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+			}
+			.activeTab {
+				position: absolute;
+				pointer-events: none;
+				background: rgba(255, 255, 255, 0.134);
+				width: 100px;
+				left: 25px;
+				height: 50px;
+				border-radius: 5px;
+			}
+			.cardsSection {
+				padding: 2rem 0;
+				align-items: center;
+				display: flex;
+				position: relative;
+				flex-direction: column;
+			}
+			.cardsSection::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				background: linear-gradient(
+						to right,
+						#141414,
+						transparent,
+						transparent,
+						transparent,
+						transparent,
+						#141414
+					),
+					linear-gradient(to top, #141414, transparent, #141414), url('./a.png');
+				background-size: cover;
+				opacity: 0.2;
+				background-repeat: repeat-y;
+				pointer-events: none;
+			}
+
+			@keyframes illustration {
+				0% {
+					transform: translateY(0);
+				}
+				100% {
+					transform: translateY(-10px);
+				}
+			}
+
+			@keyframes bg-illustration {
+				0% {
+					transform: translateY(-10px);
+				}
+				100% {
+					transform: translateY(0);
+				}
+			}
+			.cardsSection > .flex {
+				gap: 0 5rem;
+			}
+
+			.cardsSection > .flex:not(:last-of-type) {
+				margin-bottom: 3rem;
+			}
+
+			.cardsSection .cardDescription h2 {
+				color: #27c93f;
+				font-size: 2.5rem;
+
+				z-index: 5;
+				margin-bottom: 1.5rem;
+			}
+
+			.cardsSection .cardDescription button {
+				outline: none;
+				border: none;
+				padding: 0.5rem 2rem;
+				cursor: pointer;
+				font-weight: bold;
+				background: #ffffff24;
+				border-radius: 4px;
+				color: #fff;
+				z-index: 5;
+			}
+			.card {
+				justify-content: space-between;
+			}
+			.dots {
+				gap: 0 0.5rem;
+			}
+			.dot {
+				height: 12px;
+				width: 12px;
+				background: red;
+				border-radius: 100vmax;
+			}
+			.card {
+				width: 430px;
+				padding: 1rem;
+				background: #ffffff0b;
+				/* background: #212121; */
+				z-index: 5;
+				border-radius: 5px;
+				backdrop-filter: blur(50px);
+			}
+			.card .cardHeader {
+				gap: 0 1rem;
+				margin-bottom: 1rem;
+			}
+			.cardBody .lineNumber {
+				background: #00000000;
+				/* padding: 0 0.5rem; */
+			}
+			.cardBody .lineNumber span {
+				color: #ffffffb9;
+				display: block;
+				line-height: 0.7;
+				padding: 0.5rem;
+				background: #0000001c;
+			}
+			.cardBody {
+				color: #ffffffb9;
+				align-items: start;
+			}
+			.card .cardCode {
+				width: 100%;
+			}
+
+			.card .cardCode textarea {
+				width: 100%;
+				resize: none;
+				background: #212121;
+				outline: none;
+				border: none;
+				font-size: 17px;
+				height: 110px;
+				color: #ffffffb9;
+				line-height: 1.6;
+				background: transparent;
+				overflow: hidden;
+				pointer-events: none;
+				padding: 0 1rem;
+			}
+			.dot:nth-of-type(1) {
+				background: #ff5f56;
+			}
+
+			.dot:nth-of-type(2) {
+				background: #ffbd2e;
+			}
+
+			.dot:nth-of-type(3) {
+				background: #27c93f;
+			}
+			a{
+				text-decoration: none;
+				color: unset;
+			}
+			/* code classes  */
+		</style>
+	</head>
+	<body>
+		<div class="loginContainer">
+			<nav class="flex">
+				<a href="./index.html">
+					<h1>bitbites</h1>
+				</a>
+
+				<div class="links flex">
+					<div>
+						<a href="./html.html">
+							<h4>HTML</h4>
+						</a>
+					</div>
+
+					<div>
+						<a href="./css.html">
+							<h4>CSS</h4>
+						</a>
+					</div>
+					<div>
+						<a href="./js.html">
+							<h4>JS</h4>
+						</a>
+					</div>
+				</div>
+                <a href="./editor.html">
+                    <button>
+                        Try our Editor
+                    </button>
+                </a>
+			</nav>
+
+			<div class="banner flex">
+				<h1>
+					We make <span class="highlight">coding</span> less<br />
+					intimidating, one <span class="highlight">byte</span> at a time.
+				</h1>
+				<div class="imageContainer"></div>
+			</div>
+
+			<div class="cardsSection">
+				<div class="flex">
+					<div class="card">
+						<div class="cardHeader flex">
+							<svg
+								width="16"
+								height="16"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M15 6.675l-1.8-.6c-.2-.1-.3-.3-.2-.4l.9-1.7c.6-1.2-.7-2.5-1.9-1.9l-1.7.9c-.1.1-.3 0-.4-.2l-.6-1.8c-.4-1.3-2.2-1.3-2.6 0l-.6 1.8c-.1.2-.3.3-.4.2l-1.7-.9c-1.2-.6-2.5.7-1.9 1.9l.9 1.7c.1.1 0 .3-.2.4l-1.8.6c-1.3.4-1.3 2.3 0 2.7l1.8.6c.2 0 .3.2.2.3l-.9 1.7c-.6 1.2.7 2.5 1.9 1.9l1.7-.9c.2-.1.4 0 .4.2l.6 1.8c.4 1.3 2.3 1.3 2.7 0l.6-1.8c.1-.2.3-.3.4-.2l1.7.9c1.2.6 2.5-.7 1.9-1.9l-1-1.7c-.1-.2 0-.4.2-.4l1.8-.6c1.3-.4 1.3-2.2 0-2.6zm-7 3.7c-1.3 0-2.4-1.1-2.4-2.4 0-1.3 1.1-2.4 2.4-2.4 1.3 0 2.4 1.1 2.4 2.4 0 1.3-1.1 2.4-2.4 2.4z"
+									fill="#4C4F5A"
+								></path>
+							</svg>
+							<div class="dots flex">
+								<div class="dot"></div>
+								<div class="dot"></div>
+								<div class="dot"></div>
+							</div>
+						</div>
+
+						<div class="cardBody flex">
+							<div class="lineNumber">
+								<span>1</span>
+								<span>2</span>
+								<span>3</span>
+								<span>4</span>
+							</div>
+
+							<div class="cardCode">
+								<!-- <img src="./carbon.png" alt="" /> -->
+								<textarea>
+<div>
+	<h1>This is a heading</h1>
+	<p>Lorem ipsum dolor sit.</p>
+</div>
+							</textarea
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="cardDescription">
+						<h2>
+							<span class="bracket-highlight-red">{</span>HTML<span
+								class="bracket-highlight-red"
+								>}</span
+							>
+							Reference
+						</h2>
+
+						<a href="./html.html">
+						<button>
+								Explore
+							</button>
+						</a>
+					</div>
+				</div>
+				<div class="flex">
+					<div class="cardDescription">
+						<h2>
+							<span class="bracket-highlight-yellow">{</span>CSS<span
+								class="bracket-highlight-yellow"
+								>}</span
+							>
+							Reference
+						</h2>
+
+						<a href="./css.html">
+						<button>
+								Explore
+							</button>
+						</a>
+					</div>
+
+					<div class="card">
+						<div class="cardHeader flex">
+							<svg
+								width="16"
+								height="16"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M15 6.675l-1.8-.6c-.2-.1-.3-.3-.2-.4l.9-1.7c.6-1.2-.7-2.5-1.9-1.9l-1.7.9c-.1.1-.3 0-.4-.2l-.6-1.8c-.4-1.3-2.2-1.3-2.6 0l-.6 1.8c-.1.2-.3.3-.4.2l-1.7-.9c-1.2-.6-2.5.7-1.9 1.9l.9 1.7c.1.1 0 .3-.2.4l-1.8.6c-1.3.4-1.3 2.3 0 2.7l1.8.6c.2 0 .3.2.2.3l-.9 1.7c-.6 1.2.7 2.5 1.9 1.9l1.7-.9c.2-.1.4 0 .4.2l.6 1.8c.4 1.3 2.3 1.3 2.7 0l.6-1.8c.1-.2.3-.3.4-.2l1.7.9c1.2.6 2.5-.7 1.9-1.9l-1-1.7c-.1-.2 0-.4.2-.4l1.8-.6c1.3-.4 1.3-2.2 0-2.6zm-7 3.7c-1.3 0-2.4-1.1-2.4-2.4 0-1.3 1.1-2.4 2.4-2.4 1.3 0 2.4 1.1 2.4 2.4 0 1.3-1.1 2.4-2.4 2.4z"
+									fill="#4C4F5A"
+								></path>
+							</svg>
+							<div class="dots flex">
+								<div class="dot"></div>
+								<div class="dot"></div>
+								<div class="dot"></div>
+							</div>
+						</div>
+
+						<div class="cardBody flex">
+							<div class="lineNumber">
+								<span>1</span>
+								<span>2</span>
+								<span>3</span>
+								<span>4</span>
+							</div>
+
+							<div class="cardCode">
+								<!-- <img src="./carbon.png" alt="" /> -->
+								<textarea>
+.item {
+	border-bottom: 1px solid #45252515;
+	background: rgb(155, 37, 68);
+  	};
+							</textarea
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex">
+					<div class="card">
+						<div class="cardHeader flex">
+							<svg
+								width="16"
+								height="16"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M15 6.675l-1.8-.6c-.2-.1-.3-.3-.2-.4l.9-1.7c.6-1.2-.7-2.5-1.9-1.9l-1.7.9c-.1.1-.3 0-.4-.2l-.6-1.8c-.4-1.3-2.2-1.3-2.6 0l-.6 1.8c-.1.2-.3.3-.4.2l-1.7-.9c-1.2-.6-2.5.7-1.9 1.9l.9 1.7c.1.1 0 .3-.2.4l-1.8.6c-1.3.4-1.3 2.3 0 2.7l1.8.6c.2 0 .3.2.2.3l-.9 1.7c-.6 1.2.7 2.5 1.9 1.9l1.7-.9c.2-.1.4 0 .4.2l.6 1.8c.4 1.3 2.3 1.3 2.7 0l.6-1.8c.1-.2.3-.3.4-.2l1.7.9c1.2.6 2.5-.7 1.9-1.9l-1-1.7c-.1-.2 0-.4.2-.4l1.8-.6c1.3-.4 1.3-2.2 0-2.6zm-7 3.7c-1.3 0-2.4-1.1-2.4-2.4 0-1.3 1.1-2.4 2.4-2.4 1.3 0 2.4 1.1 2.4 2.4 0 1.3-1.1 2.4-2.4 2.4z"
+									fill="#4C4F5A"
+								></path>
+							</svg>
+							<div class="dots flex">
+								<div class="dot"></div>
+								<div class="dot"></div>
+								<div class="dot"></div>
+							</div>
+						</div>
+
+						<div class="cardBody flex">
+							<div class="lineNumber">
+								<span>1</span>
+								<span>2</span>
+								<span>3</span>
+								<span>4</span>
+							</div>
+
+							<div class="cardCode">
+								<!-- <img src="./carbon.png" alt="" /> -->
+								<textarea>
+const getBlobURL = (code, type) => { 
+	const blob = new Blob([code], { type });
+	return URL.createObjectURL(blob);
+};
+							</textarea
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="cardDescription">
+						<h2>
+							<span class="bracket-highlight-green">{</span>JS<span
+								class="bracket-highlight-green"
+								>}</span
+							>
+							Reference
+						</h2>
+
+						<a href="./js.html">
+							<button>
+								 Explore
+
+								</button>
+							</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CSS</title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: sans-serif;
+			}
+			body {
+				background: #141414;
+				/* padding: 4rem; */
+			}
+			.snippet {
+				/* user-select: none;
+				pointer-events: none; */
+				background: #ffffff0b;
+				margin-bottom: 1rem;
+				padding: 1rem;
+				border-radius: 5px;
+				max-width: 700px;
+			}
+			.snippet img {
+				/* user-select: none; */
+				max-width: 500px;
+			}
+			.languageHeader h1 {
+				position: relative;
+				color: #27C93F;
+				margin-bottom: 1.5rem;
+				font-size: 3rem;
+			}
+			.languageHeader h1::after {
+			    content: '';
+    position: absolute;
+    top: -17px;
+    /* left: 476px; */
+    height: 84px;
+    width: 100px;
+    background: url('https://cdn3d.iconscout.com/3d/premium/thumb/web-programing-7362212-6020421.png?f=avif');
+    background-size: contain;
+    background-repeat: no-repeat;
+			}
+			.highlight {
+				color: #2aeeff;
+			}
+			.languageIntro {
+				margin-bottom: 1.5rem;
+			}
+			.languageIntro p {
+				color: #ffffffb9;
+				line-height: 1.5;
+			}
+			.languageContainer h2 {
+				color: #27C93F;
+				margin-bottom: 1rem;
+			}
+			.languageContainer > div {
+				margin-bottom: 2rem;
+			}
+			.dots {
+				gap: 0 0.5rem;
+				display: flex;
+			}
+			.dot:nth-of-type(1) {
+				background: #ff5f56;
+			}
+
+			.dot:nth-of-type(2) {
+				background: #ffbd2e;
+			}
+
+			.dot:nth-of-type(3) {
+				background: #27c93f;
+			}
+			.dot {
+				height: 12px;
+				width: 12px;
+				background: red;
+				border-radius: 100vmax;
+			}
+			.snippetHeader {
+				display: flex;
+				align-items: center;
+				color: #ffffffb9;
+				gap: 0 1rem;
+			}
+			.snippetBody {
+				display: flex;
+				padding: 1rem 0 0 0;
+			}
+			.snippetBody .lineNumber {
+				background: #00000000;
+				/* padding: 0 0.5rem; */
+			}
+			.snippetBody .lineNumber span {
+				color: #ffffffb9;
+				display: block;
+				line-height: 0.7;
+				padding: 0.5rem;
+				background: #0000001c;
+				text-align: center;
+			}
+			.languageContainer{
+				padding: 2rem;
+			}
+			.snippetBody pre {
+				width: 100%;
+				resize: none;
+				background: #212121;
+				outline: none;
+				border: none;
+				font-size: 17px;
+				height: max-content;
+				color: #ffffffb9;
+				line-height: 1.6;
+				background: transparent;
+				/* overflow: hidden; */
+				pointer-events: none;
+				padding: 0 1rem;
+			}
+			ul li::marker,ol li::marker {
+				color: #ff5f56;
+			}
+
+			.tags p {
+				color: #ffffffb9;
+				margin-bottom: 1rem;
+				line-height: 1.4;
+			}
+			.tags ul,.tags ol {
+				color: #ffffffb9;
+				padding: 0 3rem;
+			}
+			.tags ul li ,.tags ol li{
+				margin-bottom: 1rem;
+				line-height: 1.5;
+			}
+			.red-highlight {
+				color: #ff5370 !important;
+				font-weight: bold;
+			}
+			.tags > div {
+				margin-bottom: 1rem;
+			}
+			.tags h4{
+				color: #ff5370;
+				margin-bottom: 1rem;
+			}
+
+
+
+
+
+
+
+
+
+
+
+			.flex {
+				display: flex;
+				align-items: center;
+			}
+			nav {
+				color: #ffffffb9;
+				justify-content: space-between;
+				padding: 1.5rem 2rem;
+				border-bottom: 1px solid #45252515;
+				position: relative;
+				box-shadow: 0 1px 5px 0px #51a9a930;
+			}
+
+			.links {
+				gap: 0 5rem;
+			}
+			.highlight {
+				color: #2aeeff;
+			}
+			.links > div {
+				cursor: pointer;
+			}
+			nav > h1 {
+				background: rgba(255, 255, 255, 0.134);
+				cursor: pointer;
+				border-radius: 5px;
+				padding: 0.5rem;
+			}
+			nav button {
+				color: #ffffffb9;
+				font-weight: bolder;
+				padding: 1rem;
+				cursor: pointer;
+				outline: none;
+				border: none;
+				background-color: #212121;
+				box-shadow: 0 0 10px 0px #51a9a930;
+				border-radius: 5px;
+			}
+			a{
+				text-decoration: none;
+				color: unset;
+			}
+		</style>
+	</head>
+	<body>
+		    <nav class="flex">
+				<a href="./index.html">
+					<h1>bitbites</h1>
+				</a>
+
+				<div class="links flex">
+					<div>
+						<a href="./html.html">
+							<h4>HTML</h4>
+						</a>
+					</div>
+
+					<div>
+						<a href="./css.html">
+							<h4>CSS</h4>
+						</a>
+					</div>
+					<div>
+						<a href="./js.html">
+							<h4>JS</h4>
+						</a>
+					</div>
+				</div>
+                <a href="./editor.html">
+                    <button>
+                        Try our Editor
+                    </button>
+                </a>
+			</nav>
+
+
+		    <div class="languageContainer">
+                <div class="languageHeader">
+                    <h1>&ltCSS&gt Tutorial</h1>
+                </div>
+
+                <div class="languageIntro">
+                    <p>
+                        Cascading Style Sheets (CSS) is used to format the layout of a webpage. 
+
+                    </p>
+                    <br />
+                    <p>With CSS, you can control the color, font, the size of text, the spacing between elements, how elements are
+    positioned and laid out, what background images or background colors are to be used, different displays for different
+    devices and screen sizes, and much more!
+                    </p>
+                </div>
+
+            
+
+			
+
+				<div class="tags">
+                            <div>
+                            <h2>CSS can be added to HTML documents in 3 ways:</h2>
+                            <ul>
+                                <li><span class="red-highlight">Inline</span>  - by using the <span class="red-highlight">style</span> attribute inside HTML elements</li>
+
+                                <li> <span class="red-highlight">Internal</span> - by using a <span class="red-highlight">&ltstyle&gt</span> element in the  <span class="red-highlight">&lthead&gt</span> section</li>
+
+                                <li>
+                                    <span class="red-highlight">External</span>  - by using a <span class="red-highlight">&ltlink&gt</span> element to link to an external CSS file 
+
+                                </li>
+                            </ul>
+                            </div>
+
+                            <div>
+
+                                        <h2>Internal CSS</h2>
+                                            <p>An internal CSS is used to define a style for a single HTML page. </p>
+                                            <p>An internal CSS is defined in the <span class="red-highlight">&lthead&gt</span> section of an HTML page, within a <span class="red-highlight">&ltstyle&gt</span> element. </p>
+                                            <p class="red-highlight">Example :</p>
+
+                                            <div class="snippet">
+                                    <div class="snippetHeader">
+                                        <div class="dots flex">
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                        </div>
+                                        <span>html</span>
+                                    </div>
+
+                                    <div class="snippetBody">
+                                        <div class="lineNumber">
+                                            <span>1</span>
+                                            <span>2</span>
+                                            <span>3</span>
+                                            <span>4</span>
+                                            <span>5</span>
+                                            <span>6</span>
+                                            <span>7</span>
+                                            <span>8</span>
+                                            <span>9</span>
+                                            <span>10</span>
+                                            <span>11</span>
+                                            <span>12</span>
+                                            <span>13</span>
+                                            <span>14</span>
+                                            <span>15</span>
+                                            <span>16</span>
+                                            <span>17</span>
+                                        </div>
+
+                                        <pre>
+<span class="red-highlight">&lt!DOCTYPE html&gt</span>
+    <span class="red-highlight">&lthtml&gt</span>
+        <span class="red-highlight">&lthead&gt</span>
+            <span class="red-highlight">&lttitle&gt</span>Page Title<span class="red-highlight">&lt/title&gt</span>	
+            <span class="red-highlight">&ltstyle&gt</span>
+                        <span class="red-highlight">body{
+                            </span>background-color: powderblue;<span class="red-highlight">
+                        }</span>
+                        <span class="red-highlight">h1{
+                        </span>color: blue;<span class="red-highlight">
+                        }</span>
+            <span class="red-highlight">&lt/style&gt</span>
+    <span class="red-highlight">&lt/head&gt</span>
+    <span class="red-highlight">&ltbody&gt</span>
+        <span class="red-highlight">&lth1&gt</span>This is a heading<span class="red-highlight">&lt/h1&gt</span>
+    <span class="red-highlight">&lt/body&gt</span>
+<span class="red-highlight">&lt/html&gt</span></pre
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+
+                                    <h2>External CSS</h2>
+                                        <p>To use an external style sheet, add a link to it in the <span class="red-highlight">&lthead&gt</span> section of each HTML page: </p>
+                                        <p class="red-highlight">Example :</p>
+
+                                        <div class="snippet">
+                                            <div class="snippetHeader">
+                                                <div class="dots flex">
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                </div>
+                                                <span>html</span>
+                                            </div>
+
+                                <div class="snippetBody">
+                                        <div class="lineNumber">
+                                            <span>1</span>
+                                            <span>2</span>
+                                            <span>3</span>
+                                            <span>4</span>
+                                            <span>5</span>
+                                            <span>6</span>
+                                            <span>7</span>
+                                            <span>8</span>
+                                            <span>9</span>
+                                            <span>10</span>
+                                            <span>11</span>
+                                            <span>12</span>
+                                        </div>
+
+                                    <pre>
+            <span class="red-highlight">&lt!DOCTYPE html&gt</span>
+            <span class="red-highlight">&lthtml&gt</span>
+                <span class="red-highlight">&lthead&gt</span>
+                <span class="red-highlight">&lttitle&gt</span>Page Title<span class="red-highlight">&lt/title&gt</span>	
+                    <span class="red-highlight">&ltstyle&gt</span>
+                    
+                    <span class="red-highlight">&lt/style&gt</span>
+                <span class="red-highlight">&lt/head&gt</span>
+                <span class="red-highlight">&ltbody&gt</span>
+                    <span class="red-highlight">&lth1&gt</span>This is a heading<span class="red-highlight">&lt/h1&gt</span>
+            <span class="red-highlight">	&lt/body&gt</span>
+            <span class="red-highlight">&lt/html&gt</span></pre
+                                    >
+                                </div>
+                                        </div>
+                                        <div class="snippet">
+                                            <div class="snippetHeader">
+                                                <div class="dots flex">
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                    <div class="dot"></div>
+                                                </div>
+                                                <span>css</span>
+                                            </div>
+
+                                <div class="snippetBody">
+                                        <div class="lineNumber">
+                                            <span>1</span>
+                                            <span>2</span>
+                                            <span>3</span>
+                                            <span>4</span>
+                                            <span>5</span>
+                                            <span>6</span>
+                                        </div>
+
+                                    <pre>
+    <span class="red-highlight">body{
+            </span>background-color: powderblue;<span class="red-highlight">
+    }</span>
+    <span class="red-highlight">h1{
+                </span>color: blue;<span class="red-highlight">
+    }</span></pre
+                                    >
+                                </div>
+                                        </div>
+                            </div>
+
+                            <div>
+                                <h2>CSS Colors, Fonts and Sizes</h2>
+                        <ul>
+                            <li>
+                            <span class="red-highlight">color </span>-The CSS color property defines the text color to be used. 
+
+                            </li>
+
+                                        <div class="snippet">
+                                                    <div class="snippetHeader">
+                                                        <div class="dots flex">
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                        </div>
+                                                        <span>css</span>
+                                                    </div>
+
+                                                    <div class="snippetBody">
+                                                            <div class="lineNumber">
+                                                                <span>1</span>
+                                                                <span>2</span>
+                                                                <span>3</span>
+                                                            </div>
+                                                        <pre><span class="red-highlight">p</span> {
+        color: red;
+    }
+    </pre>
+                                                    </div>
+                                        </div>
+
+                            <li>
+                                <span class="red-highlight">
+                                
+                                font-family</span> -The CSS font-family property defines the font to be used. 
+
+                            </li>
+
+                                        <div class="snippet">
+                                                    <div class="snippetHeader">
+                                                        <div class="dots flex">
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                        </div>
+                                                        <span>css</span>
+                                                    </div>
+
+                                                    <div class="snippetBody">
+                                                            <div class="lineNumber">
+                                                                <span>1</span>
+                                                                <span>2</span>
+                                                                <span>3</span>
+                                                            </div>
+                                                        <pre>
+    <span class="red-highlight">h1</span> {
+    font-family: verdana;
+    }
+    </pre>
+                                                    </div>
+                                        </div>
+
+                                <li><span class="red-highlight">
+                                    font-size</span> -The CSS font-size property defines the text size to be used. 
+                                </li>
+
+                                        <div class="snippet">
+                                                    <div class="snippetHeader">
+                                                        <div class="dots flex">
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                        </div>
+                                                        <span>css</span>
+                                                    </div>
+
+                                                    <div class="snippetBody">
+                                                            <div class="lineNumber">
+                                                                <span>1</span>
+                                                                <span>2</span>
+                                                                <span>3</span>
+                                                            </div>
+                                                        <pre><span class="red-highlight">p </span>{
+    font-size: 160%;
+    }
+    </pre>
+                                                    </div>
+                                        </div>
+                        
+                        </ul>
+                            </div>
+
+
+
+
+
+
+					<div>
+						<h2>The target Attribute</h2>
+                        <p>The <span class="red-highlight">target</span>  attribute can have one of the following values: </p>
+
+						<ul>
+							<li><span class="red-highlight">_self - </span>Default. Opens the document in the same window as it was clicked </li>
+							<li><span class="red-highlight">_blank - </span>Opens the document in a new window or tab  </li>
+							<li><span class="red-highlight">_parent - </span>Opens the document in the parent frame  </li>
+							<li><span class="red-highlight">_top - </span>Opens the document in the full body of the window 
+</li>
+						
+						</ul>
+					</div>
+
+
+                    <div>
+                        <h2> Use an Image as a Link</h2>
+                        <p>To use an image as a link, just put the <span class="red-highlight">&ltimg&gt</span>tag inside the <span class="red-highlight">&lta&gt</span> tag: </p>
+
+                        	<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>html</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+															<span>2</span>
+															<span>3</span>
+														</div>
+													<pre>
+<span class="red-highlight">&lta</span> href="default.asp" <span class="red-highlight">></span>
+        <span class="red-highlight">&ltimg</span> src="smiley.gif" style="height:42px;" <span class="red-highlight">></span>
+<span class="red-highlight">&lt/a&gt</span></pre>
+												</div>
+									</div>
+
+                    </div>
+
+
+                    <div>
+                        <h2>CSS Padding </h2>
+                        <p>The  <span class="red-highlight">CSS padding</span>  property defines a padding (space) between the text and the border. </p>
+                        <p class="red-highlight">Example: </p>
+
+                         <div class="snippet">
+                                                    <div class="snippetHeader">
+                                                        <div class="dots flex">
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                        </div>
+                                                        <span>css</span>
+                                                    </div>
+
+                                                    <div class="snippetBody">
+                                                            <div class="lineNumber">
+                                                                <span>1</span>
+                                                                <span>2</span>
+                                                                <span>3</span>
+                                                                <span>4</span>
+                                                            </div>
+                                                        <pre><span class="red-highlight">p</span> {
+        color: red;
+        padding:20px;
+    }</pre>
+                                                    </div>
+                                        </div>
+                    </div>
+
+                    <div>
+                        <h2>CSS Margin </h2>
+                        <p>The  <span class="red-highlight">CSS margin</span>  property defines a margin (space) outside the border. 
+</p>
+                        <p class="red-highlight">Example: </p>
+
+                         <div class="snippet">
+                                                    <div class="snippetHeader">
+                                                        <div class="dots flex">
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                            <div class="dot"></div>
+                                                        </div>
+                                                        <span>css</span>
+                                                    </div>
+
+                                                    <div class="snippetBody">
+                                                            <div class="lineNumber">
+                                                                <span>1</span>
+                                                                <span>2</span>
+                                                                <span>3</span>
+                                                                <span>4</span>
+                                                            </div>
+                                                        <pre><span class="red-highlight">p</span> {
+        border: 2px solid powderblue;
+        margin: 50px;
+    }</pre>
+                                                    </div>
+                                        </div>
+                    </div>
+
+
+					<div>
+						<h2>HTML Images Syntax </h2>
+						<p>The HTML <span class="red-highlight"> &ltimg&gt</span> tag is used to embed an image in a web page. </p>
+                        <p>Images are not technically inserted into a web page, images are linked to web pages. The <span class="red-highlight"> &ltimg&gt</span> tag creates aholding space for the referenced image. </p>
+
+                        <p> The <span class="red-highlight"> &ltimg&gt</span> tag is empty, it contains attributes only, and does not have a closing tag. </p>
+
+                        <p> The <span class="red-highlight"> &ltimg&gt</span> tag has two required attributes:
+</p>
+
+                <ul>
+                    <li><span class="red-highlight">src</span> -  Specifies the path to the image</li>
+                    <li><span class="red-highlight">alt</span> -  Specifies an alternate text for the image</li>
+                </ul>   
+                    <p class="red-highlight">Syntax</p>
+						
+							
+							   		<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>css</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+													<pre><span class="red-highlight"> &ltimg</span>  src="url" alt="alternatetext"<span class="red-highlight">&gt</span></pre>
+												</div>
+									</div>
+
+							
+							   		<div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>css</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+												<pre><span class="red-highlight"> &ltimg</span>  src="img_chania.jpg" alt="Flowers in China"<span class="red-highlight">&gt</span></pre>
+
+												</div>
+									</div>
+
+                                    <p class="red-highlight">Image Size - Width and Height </p>
+                                    <p>You can use the <span class="red-highlight">style</span>  attribute to specify the width and height of an image. </p>
+                                    <p class="red-highlight">Example</p>
+                                    <div class="snippet">
+												<div class="snippetHeader">
+													<div class="dots flex">
+														<div class="dot"></div>
+														<div class="dot"></div>
+														<div class="dot"></div>
+													</div>
+													<span>css</span>
+												</div>
+
+												<div class="snippetBody">
+														<div class="lineNumber">
+															<span>1</span>
+														</div>
+												<pre><span class="red-highlight"> &ltimg</span>  src="img_chania.jpg" alt="Flowers in China 
+            style='height:200px'<span class="red-highlight">&gt</span></pre>
+
+												</div>
+									</div>
+				
+					</div>
+
+
+
+
+
+					<div>
+						<h2>HTML Link Colors</h2>
+                        <p>By default, a link will appear like this (in all browsers):</p>
+						<ul>
+							<li>An unvisited link is underlined and blue</li>
+							<li>A visited link is underlined and purple </li>
+							<li>An active link is underlined and red </li>
+						
+						
+						</ul>
+                        <p>You can change the link state colors, by using <span class="red-highlight">CSS:</span></p>
+					</div>
+					
+					
+
+
+					<div>
+						<h2>Background Image on a HTML element </h2>
+                        <p>To add a background image on an HTML element, use the HTML <span class="red-highlight">style</span>  attribute and the CSS  <span class="red-highlight">background-image</span> property: </p>
+						<p class="red-highlight">Example</p>
+
+						<div class="snippet">
+							<div class="snippetHeader">
+								<div class="dots flex">
+									<div class="dot"></div>
+									<div class="dot"></div>
+									<div class="dot"></div>
+								</div>
+								<span>css</span>
+							</div>
+
+							<div class="snippetBody">
+								<div class="lineNumber">
+									<span>1</span>
+									<span>2</span>
+									<span>3</span>
+								</div>
+					 <pre><span class="red-highlight">p</span> {
+       background-image: url('img_girl.jpg');
+    }</pre>
+               
+							</div>
+						</div>
+
+					</div>
+
+					
+				
+					
+					
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+			
+			</div>
+
+		</div>
+	</body>
+</html>

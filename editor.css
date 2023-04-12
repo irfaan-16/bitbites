@@ -1,0 +1,89 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+body {
+	overflow: hidden !important;
+}
+
+.editorContainer {
+	width: 100%;
+	min-height: 100vh;
+	max-height: 800px;
+	max-height: 200px;
+	/* overflow: scroll; */
+	padding: 1rem;
+	background: #141414;
+}
+.codeInputs {
+	min-width: 400px;
+	max-width: 400px;
+}
+
+.codeInput {
+	max-width: 400px;
+}
+.codeInput .codeInputHeader {
+	padding: 0.5rem;
+	gap: 0 0.2rem;
+	color: #fff;
+}
+.codeInput .codeInputHeader svg {
+	max-width: 18px;
+}
+
+.flex {
+	display: flex;
+}
+
+.codeInput textarea {
+	outline: none;
+	border: none;
+	padding: 1rem;
+	/* border: 1.5px  solid #355FF0; */
+	width: 90%;
+	background: #212121;
+	border-radius: 5px;
+	color: #fff;
+	box-shadow: 0 0 30px #355ef017;
+	font-family: sans-serif;
+	min-height: 150px;
+	max-height: 150px;
+	resize: none;
+}
+.codeEditorContainer {
+	/* width: 300px; */
+	width: 95%;
+	height: 150px;
+	position: relative;
+}
+.CodeMirror {
+	font-family: sans-serif !important;
+	height: 100% !important;
+}
+#html {
+	/* position: absolute; */
+	height: 100%;
+	width: 100%;
+	/* background-color: red; */
+	top: 0;
+	left: 0;
+	font-size: 14px;
+}
+.space-between {
+	justify-content: space-between;
+}
+
+.output {
+	flex: 1;
+}
+
+.output iframe {
+	width: 100%;
+	background: hsl(0deg 0% 100%);
+
+	height: 100%;
+	border: none;
+}
